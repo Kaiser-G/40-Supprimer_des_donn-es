@@ -30,8 +30,14 @@
   <script src="./Js/ajax_Js_ES6.js"></script>
   <script>
     function RetourAjax(reponse) {
-      alert("Voiture supprimée avec le code : " + code);
+      if (reponse === "1") {
+        alert("Voiture supprimée avec le code : " + code);
+        document.getElementById("reponse").innerHTML = "Voiture supprimée";
 
+      } else {
+        alert("Voiture non supprimée avec le code : " + code);
+        document.getElementById("reponse").innerHTML = "Voiture non supprimée";
+      }
     }
 
 

@@ -30,11 +30,15 @@
   <script src="./js/Ajax_class.js"></script>
   <script>
     function RetourAjax(reponse) {
-      alert("Voiture avec le code : " + code + " a été supprimée");
+      if (reponse === "1") {
+        alert("Voiture supprimée avec le code : " + code);
+        document.getElementById("reponse").innerHTML = "Voiture supprimée";
 
+      } else {
+        alert("Voiture non supprimée avec le code : " + code);
+        document.getElementById("reponse").innerHTML = "Voiture non supprimée";
+      }
     }
-
-
     function Erreur_Ajax(reponse) {
       alert("Erreur Ajax ");
 
