@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exercice 1 (20 Put_voitures_saisie.html)_Class:</title>
+  <title>Exercice 1 (40 Delete_voitures_saisie.html)_Class:</title>
   <link rel="stylesheet" href="" />
 
 
@@ -19,10 +19,8 @@
 
 <body>
   <input id="saisieCode" type="text" placeholder="Saisir un code">
-  <input id="saisieMarque" type="text" placeholder="Saisir une marque">
-  <input id="saisieCouleur" type="text" placeholder="Saisir une couleur">
-  <input id="saisieCylindree" type="text" placeholder="Saisir une cylindrée">
-  <button id="btnGo">Modifier</button>
+
+  <button id="btnGo">Supprimer</button>
 
   <div id="reponse"></div>
 
@@ -32,25 +30,10 @@
   <script src="./js/Ajax_class.js"></script>
   <script>
     function RetourAjax(reponse) {
-      alert("Voiture bien modifiée avec le code : " + code);
+      alert("Voiture avec le code : " + code + " a été supprimée");
 
     }
 
-    function Get_zones() {
-      //Au format chaine de parametres
-      // let resultat;
-      // resultat = "marque=" + document.getElementById("saisieMarque").value;
-      // resultat += "&couleur=" + document.getElementById("saisieCouleur").value;
-      // resultat += "&cylindree=" + document.getElementById("saisieCylindree").value;
-      // return resultat;
-
-      // Au format JSON
-      let obj = {};
-      obj.marque = document.getElementById("saisieMarque").value;
-      obj.couleur = document.getElementById("saisieCouleur").value;
-      obj.cylindree = document.getElementById("saisieCylindree").value;
-      return JSON.stringify(obj);
-    }
 
     function Erreur_Ajax(reponse) {
       alert("Erreur Ajax ");
@@ -63,9 +46,10 @@
 
       btn.addEventListener("click", () => {
         code = document.getElementById("saisieCode").value;
-        let params = Get_zones();
-        let Ajax = new Ajax_Es6(urlApi + "/" + code);
-        Ajax.put(params, RetourAjax, Erreur_Ajax);
+        // let Ajax = new Ajax_Es6(urlApi + "/" + code);
+        let ajax = new Ajax_Es6(urlApi);
+        ajax.Cle = code;
+        ajax.del(RetourAjax, Erreur_Ajax);
       }, false);
     });
   </script>
